@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "nodemon --signal SIGINT src/dev.js",
-    "start": "node src/index.js"
+    "start": "node src/index.js",
+    "db:setup": "node scripts/setup-db.js"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",

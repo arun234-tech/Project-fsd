@@ -37,6 +37,15 @@ npm run dev
 ```
 Open the Vite URL printed in the terminal, usually `http://localhost:5173`. `http://127.0.0.1:5173` is also supported.
 
+## Deploy with Neon, Render, and Vercel
+
+1. **Neon:** Create a PostgreSQL project and copy its pooled connection string. Keep it private; it is the Render `DATABASE_URL`.
+2. **Render:** Create a Blueprint from this GitHub repository and use the root `render.yaml`. Set `DATABASE_URL` to the Neon connection string and `CLIENT_ORIGIN` to the Vercel site's origin (for example, `https://your-site.vercel.app`, with no path). Render generates `JWT_SECRET`. The start command creates the schema and inserts demo listings only if the database is empty.
+3. **Vercel:** Import the same GitHub repository as a Vite project and set the Root Directory to `client`. Set `VITE_API_URL` to the Render API URL plus `/api` (for example, `https://your-api.onrender.com/api`), then deploy. `client/vercel.json` enables client-side route refreshes.
+4. After the first Render deploy, verify `https://your-api.onrender.com/api/health`, then ensure `CLIENT_ORIGIN` exactly matches the deployed Vercel origin. If you change that Render variable, redeploy/restart the API.
+
+The frontend URL is public; do not put database credentials or `JWT_SECRET` in Vercel. Render's free web service may sleep when idle and take longer to answer its first request.
+
 ## Demo notes
 The seed script creates example properties only. Register an account to post and manage listings. Do not use demo credentials or a development JWT secret in production.
 
