@@ -1,0 +1,5 @@
+INSERT INTO properties (title, description, price, listing_type, property_type, city, address, bedrooms, bathrooms, area_sqft, image_url, amenities)
+VALUES
+('Sunlit Modern Apartment','A bright, thoughtfully planned apartment close to cafes, parks, and daily essentials.',8500000,'sale','apartment','Chandigarh','Sector 35, Chandigarh',3,2,1450,'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80',ARRAY['Parking','Balcony','Lift']),
+('Peaceful Family Villa','Spacious family villa with a private garden and generous natural light.',22500000,'sale','villa','Mohali','Sector 79, Mohali',4,4,3200,'https://images.unsplash.com/photo-1600597687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80',ARRAY['Garden','Parking','Security']),
+('Ready-to-Move Rental Home','Comfortable home with a practical layout and quick access to public transport.',28000,'rent','house','Kharar','Sunny Enclave',3,2,1600,'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=80',ARRAY['Furnished','Parking']);
