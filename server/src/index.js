@@ -38,7 +38,12 @@ const clientOrigins = (process.env.CLIENT_ORIGIN || 'http://localhost:5173,http:
   .split(',')
   .map(origin => origin.trim())
   .filter(Boolean);
-app.use(cors({ origin: clientOrigins }));
+const vercelDeploymentOrigin = /^https:\/\/capstone-project-[a-z0-9]+-findit-campus1\.vercel\.app$/i;
+app.use(cors({
+  origin: (origin, callback) => {
+    callback(null, !origin || clientOrigins.includes(origin) || vercelDeploymentOrigin.test(origin));
+  },
+}));
 app.use(express.json({ limit: '1mb' }));
 app.get('/api/health', (_req, res) => res.json({ status: 'ok', service: 'real-estate-portal-api' }));
 app.use('/api/auth', authRoutes);
